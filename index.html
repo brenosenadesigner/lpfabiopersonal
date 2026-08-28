@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fábio Fregona | Personal Trainer & Consultoria Online</title>
+  <meta name="description" content="Conquiste resultados reais com um treino feito exclusivamente para a sua rotina. Mais de 10 anos de experiência prática e ciência aplicada.">
+  
+  <!-- Google Fonts: Teko & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            onyx: '#06090E',
+            surface: '#0E141F',
+            primaryBlue: '#00A3FF',
+            cobaltBlue: '#0066CC',
+            cyanHighlight: '#47C8FF',
+            silverText: '#94A3B8',
+          },
+          fontFamily: {
+            teko: ['Teko', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'electric-glow': '0 0 35px rgba(0, 163, 255, 0.45)',
+            'cyan-glow': '0 0 25px rgba(71, 200, 255, 0.35)',
+            'card-glow': '0 10px 40px -10px rgba(0, 163, 255, 0.12)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06090E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0E141F;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00A3FF;
+    }
+
+    /* Scroll reveal animation styles */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Accordion Transition */
+    .faq-answer {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+      opacity: 1;
+      transition: max-height 0.5s ease-in-out, opacity 0.4s ease, padding 0.3s ease;
+    }
+
+    /* Continuous Marquee Carousel for Feedbacks */
+    .marquee-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track.paused {
+      animation-play-state: paused !important;
+    }
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body class="bg-onyx text-white font-inter antialiased selection:bg-primaryBlue selection:text-white overflow-x-hidden">
+
+  <!-- BACKGROUND AMBIENT GLOWS -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-primaryBlue/10 blur-[140px] pointer-events-none z-0 rounded-full"></div>
+
+  <main class="relative z-10">
+
+    <!-- 1. HERO SECTION (SEM SOMBREAMENTO E SEM CARD ACIMA DO TÍTULO) -->
+    <section class="relative min-h-[100dvh] flex flex-col justify-end md:justify-center overflow-hidden">
+      
+      <!-- DESKTOP BACKGROUND IMAGE (SEM SOMBREAMENTO) -->
+      <div class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0">
+        <img src="bg hero desktop.png" alt="Fábio Fregona Personal Trainer - Desktop Background" class="w-full h-full object-cover object-center">
+      </div>
+
+      <!-- MOBILE BACKGROUND IMAGE (SEM SOMBREAMENTO) -->
+      <div class="block md:hidden absolute inset-0 w-full h-full pointer-events-none z-0">
+        <img src="bg hero mobile.png" alt="Fábio Fregona Personal Trainer - Mobile Background" class="w-full h-full object-cover object-center">
+      </div>
+
+      <!-- HERO CONTENT OVERLAY -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 pb-16 md:py-24">
+        <div class="max-w-2xl reveal">
+          
+          <!-- TÍTULO PRINCIPAL (AUMENTADO NO MOBILE A PARTIR DE 400PX E REDUZIDO NO DESKTOP) -->
+          <h1 class="font-teko font-bold text-3xl min-[400px]:text-4xl min-[480px]:text-5xl md:text-5xl lg:text-5xl uppercase tracking-tight text-white leading-[0.98] mb-6">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primaryBlue via-cyanHighlight to-white">CONQUISTE RESULTADOS REAIS</span> COM UM TREINO FEITO EXCLUSIVAMENTE PARA A SUA ROTINA
+          </h1>
+
+          <!-- SUBTÍTULO (Inter) -->
+          <p class="font-inter text-sm sm:text-base md:text-lg text-silverText leading-relaxed mb-8">
+            Mais de 10 anos de experiência prática e ciência aplicada para você queimar gordura, ganhar massa muscular e conquistar o corpo que deseja — sem treinos genéricos de ficha e sem dietas restritivas.
+          </p>
+
+          <!-- CTA PRINCIPAL (FONTE INTER NOS BOTÕES) -->
+          <div class="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-6">
+            <a href="https://api.whatsapp.com/send?phone=5527999166332&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeRnrYVWkMQEbzvRSUMmX2NxVolEW3Ul_A_oYmYcXooFTiLKmmfpy37VoTmyQ_aem_bBkK-9IegBLYLk7unryhog" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-primaryBlue to-cobaltBlue font-inter font-extrabold text-sm sm:text-base uppercase tracking-wider text-white shadow-electric-glow hover:shadow-[0_0_50px_rgba(0,163,255,0.7)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-center">
+              <span>QUERO UMA AVALIAÇÃO PERSONALIZADA</span>
+              <div class="ml-3 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform shrink-0">
+                <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>
+              </div>
+            </a>
+          </div>
+
+          <!-- MICRO-COPY DE SEGURANÇA -->
+          <p class="text-xs sm:text-sm text-silverText/90 flex items-center gap-2 border-l-2 border-primaryBlue pl-3 italic py-1">
+            <i data-lucide="shield-check" class="w-4 h-4 text-primaryBlue shrink-0"></i>
+            Atendimento individual direto com o Prof. Fábio Fregona (CREF 8206).
+          </p>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- 2. SEÇÃO DE IDENTIFICAÇÃO DO PROBLEMA (DORES DO ALUNO) - MOBILE VERTICAL CARD STACKING -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+      
+      <!-- TITLE -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-cyanHighlight font-teko text-xl font-semibold tracking-widest uppercase block mb-2">IDENTIFICAÇÃO DAS DORES</span>
+        <h2 class="font-teko font-bold text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white leading-tight">
+          POR QUE A MAIORIA DAS PESSOAS TREINA DURO E NÃO VÊ MUDANÇAS NO CORPO?
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-primaryBlue to-cyanHighlight mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- PROBLEM CARDS CONTAINER (MOBILE VERTICAL CARD STACKING) -->
+      <div class="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
+        
+        <!-- CARD 1 -->
+        <div class="sticky top-20 md:relative md:top-0 z-10 bg-surface rounded-3xl p-6 sm:p-8 shadow-2xl transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-teko text-3xl font-bold text-red-500/80">01</span>
+            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400">
+              <i data-lucide="file-x" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3">
+            Treinos Genéricos de Academia
+          </h3>
+          <p class="text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            Fichas prontas feitas no piloto automático que não consideram suas limitações, rotina ou biomecânica individual.
+          </p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="sticky top-28 md:relative md:top-0 z-20 bg-surface rounded-3xl p-6 sm:p-8 shadow-2xl transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-teko text-3xl font-bold text-amber-500/80">02</span>
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">
+              <i data-lucide="compass" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3">
+            Falta de Direcionamento
+          </h3>
+          <p class="text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            Você entra na academia sem saber exatamente o que fazer, qual carga usar ou se a execução está correta.
+          </p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="sticky top-36 md:relative md:top-0 z-30 bg-surface rounded-3xl p-6 sm:p-8 shadow-2xl transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-teko text-3xl font-bold text-red-500/80">03</span>
+            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400">
+              <i data-lucide="trending-down" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3">
+            Frustração e Efeito Platô
+          </h3>
+          <p class="text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            Semanas de esforço sem notar diferença nas medidas, na balança ou na definição muscular no espelho.
+          </p>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="sticky top-44 md:relative md:top-0 z-40 bg-surface rounded-3xl p-6 sm:p-8 shadow-2xl transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-teko text-3xl font-bold text-amber-500/80">04</span>
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">
+              <i data-lucide="clock-alert" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3">
+            Rotina Sem Tempo
+          </h3>
+          <p class="text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            Dificuldade em conciliar trabalho, família e treinos longos e cansativos que parecem insustentáveis a longo prazo.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 3. A SOLUÇÃO: OS 3 PILARES DO MÉTODO FÁBIO FREGONA - MOBILE HORIZONTAL SCROLL STACK -->
+    <section id="dobra3-scroll-track" class="relative min-h-[250vh] md:min-h-0 py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      
+      <!-- Sticky Container on Mobile -->
+      <div class="sticky top-20 md:relative md:top-0 flex flex-col justify-center h-[80vh] md:h-auto">
+        
+        <!-- TITLE -->
+        <div class="text-center max-w-3xl mx-auto mb-8 md:mb-16">
+          <span class="text-cyanHighlight font-teko text-xl font-semibold tracking-widest uppercase block mb-2">A METODOLOGIA</span>
+          <h2 class="font-teko font-bold text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white leading-tight">
+            UM MÉTODO COMPLETO FOCADO EM RESULTADOS RÁPIDOS E SUSTENTÁVEIS
+          </h2>
+          <p class="text-silverText font-inter text-base mt-2 hidden sm:block">Ciência aplicada ao seu biotipo e ao seu tempo.</p>
+        </div>
+
+        <!-- 3 PILARES CARDS WRAPPER -->
+        <div class="relative w-full max-w-md mx-auto md:max-w-none md:grid md:grid-cols-3 md:gap-8 h-[360px] sm:h-[400px] md:h-auto">
+          
+          <!-- PILAR 01 -->
+          <div id="pilar-card-1" class="absolute inset-0 md:relative md:inset-auto z-10 bg-surface rounded-[2rem] p-6 sm:p-8 shadow-2xl flex flex-col justify-between">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primaryBlue/10 text-primaryBlue font-teko text-lg font-bold uppercase tracking-wider mb-4">
+                PILAR 01
+              </div>
+              
+              <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3 leading-snug">
+                Avaliação e Planejamento Individualizado
+              </h3>
+              
+              <p class="text-silverText font-inter text-xs sm:text-base leading-relaxed italic">
+                Análise profunda do seu histórico, rotina, desvios posturais e metas para desenhar um cronograma que se adapte ao seu estilo de vida.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3 text-cyanHighlight">
+              <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+              <span class="text-xs font-semibold uppercase tracking-wider font-teko text-base">Estratégia Sob Medida</span>
+            </div>
+          </div>
+
+          <!-- PILAR 02 -->
+          <div id="pilar-card-2" class="absolute inset-0 md:relative md:inset-auto z-20 bg-surface rounded-[2rem] p-6 sm:p-8 shadow-2xl flex flex-col justify-between transition-transform duration-75 ease-out md:transform-none">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyanHighlight/10 text-cyanHighlight font-teko text-lg font-bold uppercase tracking-wider mb-4">
+                PILAR 02
+              </div>
+              
+              <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3 leading-snug">
+                Execução Técnica & Segurança Articular
+              </h3>
+              
+              <p class="text-silverText font-inter text-xs sm:text-base leading-relaxed italic">
+                Orientações detalhadas sobre mecânica de movimento para ativar os músculos corretos na intensidade ideal, blindando você contra lesões.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3 text-cyanHighlight">
+              <i data-lucide="shield" class="w-5 h-5"></i>
+              <span class="text-xs font-semibold uppercase tracking-wider font-teko text-base">Biomecânica Sem Lesões</span>
+            </div>
+          </div>
+
+          <!-- PILAR 03 -->
+          <div id="pilar-card-3" class="absolute inset-0 md:relative md:inset-auto z-30 bg-surface rounded-[2rem] p-6 sm:p-8 shadow-2xl flex flex-col justify-between transition-transform duration-75 ease-out md:transform-none">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cobaltBlue/10 text-cyanHighlight font-teko text-lg font-bold uppercase tracking-wider mb-4">
+                PILAR 03
+              </div>
+              
+              <h3 class="font-teko font-bold text-2xl sm:text-3xl uppercase tracking-wider text-white mb-3 leading-snug">
+                Acompanhamento Próximo & Ajustes Periódicos
+              </h3>
+              
+              <p class="text-silverText font-inter text-xs sm:text-base leading-relaxed italic">
+                Suporte constante para monitorar a evolução das cargas, responder dúvidas e ajustar a periodização conforme seu corpo evolui.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3 text-cyanHighlight">
+              <i data-lucide="line-chart" class="w-5 h-5"></i>
+              <span class="text-xs font-semibold uppercase tracking-wider font-teko text-base">Evolução Contínua</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 4. MODALIDADES DE ACOMPANHAMENTO (BORDAS TRANSPARENTES MANTIDAS SOMENTE NESTA DOBRA) -->
+    <section id="modalidades" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+      
+      <!-- TITLE -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="text-cyanHighlight font-teko text-xl font-semibold tracking-widest uppercase block mb-2">FORMATOS DE TREINO</span>
+        <h2 class="font-teko font-bold text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white leading-tight">
+          ESCOLHA O FORMATO IDEAL PARA A SUA ROTINA
+        </h2>
+      </div>
+
+      <!-- COMPARISON CARDS (CONSULTORIA ONLINE vs PERSONAL PRESENCIAL) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- MODALIDADE 1: CONSULTORIA ONLINE -->
+        <div class="reveal group relative bg-surface/90 border border-white/10 rounded-[2.5rem] p-2 sm:p-3 transition-all duration-500 hover:border-primaryBlue hover:shadow-electric-glow flex flex-col justify-between">
+          <div class="bg-onyx/95 rounded-[calc(2.5rem-0.75rem)] p-8 sm:p-10 flex flex-col justify-between h-full border border-white/5">
+            <div>
+              <!-- HEADER CARD -->
+              <div class="flex items-center justify-between mb-6">
+                <span class="px-4 py-1 rounded-full bg-primaryBlue/10 border border-primaryBlue/40 text-primaryBlue font-teko text-base font-bold uppercase tracking-wider">
+                  FLEXIBILIDADE TOTAL
+                </span>
+                <i data-lucide="globe" class="w-8 h-8 text-primaryBlue"></i>
+              </div>
+
+              <h3 class="font-teko font-bold text-4xl sm:text-5xl uppercase tracking-wider text-white mb-4">
+                CONSULTORIA ONLINE
+              </h3>
+
+              <p class="text-silverText font-inter text-base sm:text-lg mb-8 leading-relaxed">
+                Para quem busca liberdade geográfica e flexibilidade de horários para treinar onde e quando quiser.
+              </p>
+
+              <!-- BULLET POINTS -->
+              <ul class="space-y-4 mb-10 text-white font-inter text-sm sm:text-base">
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-primaryBlue/20 border border-primaryBlue/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Acesso ao aplicativo com vídeos explicativos</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-primaryBlue/20 border border-primaryBlue/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Prescrição de treino atualizada periodicamente</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-primaryBlue/20 border border-primaryBlue/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Análise de vídeos de execução pelo WhatsApp</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-primaryBlue/20 border border-primaryBlue/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Orientações gerais de hábitos e rotina ativa</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CTA BUTTON (FONTE INTER) -->
+            <a href="https://api.whatsapp.com/send?phone=5527999166332&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeRnrYVWkMQEbzvRSUMmX2NxVolEW3Ul_A_oYmYcXooFTiLKmmfpy37VoTmyQ_aem_bBkK-9IegBLYLk7unryhog" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="w-full py-4 px-6 rounded-full bg-gradient-to-r from-primaryBlue to-cobaltBlue font-inter font-extrabold text-base uppercase tracking-wider text-white text-center flex items-center justify-center gap-3 shadow-electric-glow hover:scale-[1.02] transition-transform">
+              <span>QUERO CONSULTORIA ONLINE</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- MODALIDADE 2: PERSONAL PRESENCIAL -->
+        <div class="reveal group relative bg-surface/90 border border-white/10 rounded-[2.5rem] p-2 sm:p-3 transition-all duration-500 hover:border-cyanHighlight hover:shadow-cyan-glow flex flex-col justify-between">
+          <div class="bg-onyx/95 rounded-[calc(2.5rem-0.75rem)] p-8 sm:p-10 flex flex-col justify-between h-full border border-white/5">
+            <div>
+              <!-- HEADER CARD -->
+              <div class="flex items-center justify-between mb-6">
+                <span class="px-4 py-1 rounded-full bg-cyanHighlight/10 border border-cyanHighlight/40 text-cyanHighlight font-teko text-base font-bold uppercase tracking-wider">
+                  ACOMPANHAMENTO VIP
+                </span>
+                <i data-lucide="user-check" class="w-8 h-8 text-cyanHighlight"></i>
+              </div>
+
+              <h3 class="font-teko font-bold text-4xl sm:text-5xl uppercase tracking-wider text-white mb-4">
+                PERSONAL PRESENCIAL
+              </h3>
+
+              <p class="text-silverText font-inter text-base sm:text-lg mb-8 leading-relaxed">
+                Para quem deseja acompanhamento direto e correção postural em tempo real durante cada repetição.
+              </p>
+
+              <!-- BULLET POINTS -->
+              <ul class="space-y-4 mb-10 text-white font-inter text-sm sm:text-base">
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-cyanHighlight/20 border border-cyanHighlight/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Sessões 1 a 1 com foco total no aluno</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-cyanHighlight/20 border border-cyanHighlight/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Correção de carga e técnica ao vivo</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-cyanHighlight/20 border border-cyanHighlight/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Máxima motivação, intensidade e segurança</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-cyanHighlight/20 border border-cyanHighlight/40 flex items-center justify-center text-cyanHighlight shrink-0 mt-0.5">
+                    ✓
+                  </div>
+                  <span>Avaliações físicas periódicas completas</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CTA BUTTON (FONTE INTER) -->
+            <a href="https://api.whatsapp.com/send?phone=5527999166332&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeRnrYVWkMQEbzvRSUMmX2NxVolEW3Ul_A_oYmYcXooFTiLKmmfpy37VoTmyQ_aem_bBkK-9IegBLYLk7unryhog" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="w-full py-4 px-6 rounded-full bg-gradient-to-r from-cobaltBlue to-primaryBlue font-inter font-extrabold text-base uppercase tracking-wider text-white text-center flex items-center justify-center gap-3 shadow-electric-glow hover:scale-[1.02] transition-transform">
+              <span>AGENDAR TREINO PRESENCIAL</span>
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 5. PROVA SOCIAL E RESULTADOS - CARROSSEL CONTÍNUO (SEM BORDAS TRANSPARENTES) -->
+    <section id="resultados" class="py-24 max-w-7xl mx-auto relative overflow-hidden">
+      
+      <!-- TITLE -->
+      <div class="text-center max-w-3xl mx-auto px-4 sm:px-6 mb-12 reveal">
+        <span class="text-cyanHighlight font-teko text-xl font-semibold tracking-widest uppercase block mb-2">TRANSFORMAÇÕES REAIS</span>
+        <h2 class="font-teko font-bold text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-white leading-tight">
+          RESULTADOS REAIS DE QUEM DECIDIU NÃO TREINAR NO PILOTO AUTOMÁTICO
+        </h2>
+        <p class="text-silverText font-inter text-base sm:text-lg mt-3">
+          Veja a transformação física de alunos que aplicaram a metodologia correta.
+        </p>
+      </div>
+
+      <!-- CONTINUOUS MARQUEE CAROUSEL -->
+      <div class="marquee-container py-4">
+        <div id="marquee-track" class="marquee-track">
+          
+          <!-- SET 1 (5 IMAGES) -->
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-1.jpg" alt="Resultado de Aluno Fábio Fregona 1" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-2.jpg" alt="Resultado de Aluno Fábio Fregona 2" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-3.jpg" alt="Resultado de Aluno Fábio Fregona 3" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-4.jpg" alt="Resultado de Aluno Fábio Fregona 4" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-5.jpg" alt="Resultado de Aluno Fábio Fregona 5" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <!-- SET 2 (DUPLICATED FOR SEAMLESS LOOP) -->
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-1.jpg" alt="Resultado de Aluno Fábio Fregona 1" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-2.jpg" alt="Resultado de Aluno Fábio Fregona 2" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-3.jpg" alt="Resultado de Aluno Fábio Fregona 3" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-4.jpg" alt="Resultado de Aluno Fábio Fregona 4" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div class="carousel-item shrink-0 w-[280px] sm:w-[320px] rounded-3xl overflow-hidden bg-surface p-2 shadow-2xl transition-transform duration-300 hover:scale-105 cursor-pointer">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-onyx">
+              <img src="feedback-5.jpg" alt="Resultado de Aluno Fábio Fregona 5" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- INSTRUCTION HINT -->
+      <div id="carousel-status-hint" class="text-center text-xs text-silverText/70 mt-4 flex items-center justify-center gap-2">
+        <i data-lucide="hand" class="w-4 h-4 text-cyanHighlight"></i>
+        <span>Clique/toque na imagem para pausar a rolagem (retoma automaticamente em 5s)</span>
+      </div>
+
+    </section>
+
+
+    <!-- 6. SOBRE O PROFISSIONAL (FOTO.PNG - SEM BORDAS TRANSPARENTES) -->
+    <section id="sobre" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- TRAINER IMAGE (foto.png) -->
+        <div class="lg:col-span-5 reveal">
+          <div class="relative rounded-[2.5rem] bg-surface p-2 shadow-2xl">
+            <div class="relative rounded-[calc(2.5rem-0.5rem)] overflow-hidden bg-onyx">
+              <img src="foto.png" 
+                   alt="Prof. Fábio Fregona Personal Trainer" 
+                   class="w-full h-auto object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-onyx via-transparent to-transparent opacity-60"></div>
+              
+              <!-- BADGE EXPERIENCE OVERLAY -->
+              <div class="absolute bottom-6 left-6 right-6 bg-surface/95 p-4 rounded-2xl backdrop-blur-md">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-xs uppercase text-cyanHighlight font-semibold tracking-wider font-teko">Membro Efetivo</span>
+                    <h4 class="font-teko font-bold text-2xl text-white">PROF. FÁBIO FREGONA</h4>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-teko font-bold text-3xl text-primaryBlue leading-none block">CREF</span>
+                    <span class="text-xs font-bold text-white">8206</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- TRAINER COPY -->
+        <div class="lg:col-span-7 reveal">
+          
+          <span class="text-cyanHighlight font-teko text-xl font-semibold tracking-widest uppercase block mb-2">QUEM É O SEU MENTOR</span>
+          
+          <h2 class="font-teko font-bold text-4xl sm:text-6xl uppercase tracking-tight text-white leading-none mb-8">
+            CONHEÇA QUEM VAI TE GUIAR ATÉ O SEU MELHOR FÍSICO
+          </h2>
+
+          <div class="space-y-6 text-silverText font-inter text-base sm:text-lg leading-relaxed">
+            <p>
+              Me chamo <strong class="text-white font-semibold">Fábio Fregona</strong>, sou graduado em Educação Física e atuo como Personal Trainer há mais de 10 anos (CREF 8206). Minha carreira começou em 2012, no primeiro período da faculdade, movida pela paixão por transformar a relação das pessoas com seus corpos e com a saúde.
+            </p>
+
+            <p>
+              Como pai de família e praticante diário de musculação, compreendo exatamente o desafio de equilibrar compromissos profissionais e pessoais com o autocuidado.
+            </p>
+
+            <p class="border-l-4 border-primaryBlue pl-4 py-2 italic text-white font-medium bg-surface/40 rounded-r-xl">
+              "Minha missão não é prescrever treinos cansativos sem propósito, mas sim entregar uma estratégia inteligente, eficiente e sob medida que traga resultados estéticos reais sem roubar seu tempo livre."
+            </p>
+          </div>
+
+          <!-- KEY HIGHLIGHTS -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-white/10">
+            <div>
+              <div class="font-teko font-bold text-4xl text-primaryBlue leading-none">+10 ANOS</div>
+              <div class="text-xs text-silverText uppercase tracking-wider mt-1">De Experiência</div>
+            </div>
+            <div>
+              <div class="font-teko font-bold text-4xl text-cyanHighlight leading-none">2012</div>
+              <div class="text-xs text-silverText uppercase tracking-wider mt-1">Início da Carreira</div>
+            </div>
+            <div>
+              <div class="font-teko font-bold text-4xl text-white leading-none">100%</div>
+              <div class="text-xs text-silverText uppercase tracking-wider mt-1">Foco no Aluno</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 7. FAQ (PERGUNTAS COM FONTE INTER & SEM BORDAS TRANSPARENTES) -->
+    <section id="faq" class="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative">
+      
+      <!-- TITLE -->
+      <div class="text-center mb-16 reveal">
+        <span class="text-cyanHighlight font-teko text-xl font-semibold tracking-widest uppercase block mb-2">TIRA-DÚVIDAS</span>
+        <h2 class="font-teko font-bold text-3xl sm:text-5xl uppercase tracking-tight text-white leading-tight">
+          PERGUNTAS FREQUENTES
+        </h2>
+        <p class="text-silverText font-inter text-base mt-2">Tudo o que você precisa saber antes de iniciar seu acompanhamento.</p>
+      </div>
+
+      <!-- FAQ ACCORDION LIST (TITULOS NA FONTE INTER & SEM BORDAS TRANSPARENTES) -->
+      <div class="space-y-4 reveal">
+        
+        <!-- FAQ 1 -->
+        <div class="bg-surface rounded-2xl overflow-hidden">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-inter font-bold text-base sm:text-xl text-white focus:outline-none">
+            <span>Nunca treinei antes / sou iniciante, o acompanhamento serve para mim?</span>
+            <div class="w-8 h-8 rounded-full bg-onyx flex items-center justify-center text-primaryBlue shrink-0 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-5 h-5 icon-chevron"></i>
+            </div>
+          </button>
+          <div class="faq-answer px-6 text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            <p class="pb-6">Sim. Todo o programa é construído de acordo com o seu nível de condicionamento atual, focando no aprendizado técnico progressivo antes do aumento de cargas.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-surface rounded-2xl overflow-hidden">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-inter font-bold text-base sm:text-xl text-white focus:outline-none">
+            <span>Como funciona o envio dos treinos na Consultoria Online?</span>
+            <div class="w-8 h-8 rounded-full bg-onyx flex items-center justify-center text-primaryBlue shrink-0 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-5 h-5 icon-chevron"></i>
+            </div>
+          </button>
+          <div class="faq-answer px-6 text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            <p class="pb-6">Você recebe acesso a uma plataforma intuitiva onde constam todos os exercícios, séries, repetições, intervalos e vídeos demonstrativos em alta resolução de cada movimento.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-surface rounded-2xl overflow-hidden">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-inter font-bold text-base sm:text-xl text-white focus:outline-none">
+            <span>Como tiro minhas dúvidas durante a semana?</span>
+            <div class="w-8 h-8 rounded-full bg-onyx flex items-center justify-center text-primaryBlue shrink-0 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-5 h-5 icon-chevron"></i>
+            </div>
+          </button>
+          <div class="faq-answer px-6 text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            <p class="pb-6">Você tem acesso direto ao WhatsApp do Fábio para enviar dúvidas sobre execução, relatar feedbacks e enviar vídeos executando os exercícios para correção.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-surface rounded-2xl overflow-hidden">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-inter font-bold text-base sm:text-xl text-white focus:outline-none">
+            <span>Qual a frequência semanal mínima de treino necessária para ter resultados?</span>
+            <div class="w-8 h-8 rounded-full bg-onyx flex items-center justify-center text-primaryBlue shrink-0 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-5 h-5 icon-chevron"></i>
+            </div>
+          </button>
+          <div class="faq-answer px-6 text-silverText font-inter text-sm sm:text-base leading-relaxed">
+            <p class="pb-6">O planejamento é adaptado aos dias que você tem disponíveis — seja treinando 3, 4 ou 5 vezes na semana com máxima eficiência de tempo por sessão.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 8. CHAMADA FINAL PARA AÇÃO (CTA SECTION) -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+      
+      <div class="reveal relative rounded-[3rem] bg-gradient-to-b from-surface via-onyx to-onyx p-8 sm:p-16 text-center overflow-hidden shadow-electric-glow">
+        
+        <div class="relative z-10 max-w-3xl mx-auto">
+          
+          <span class="px-4 py-1.5 rounded-full bg-primaryBlue/10 text-cyanHighlight font-teko text-lg font-bold uppercase tracking-wider inline-block mb-6">
+            COMECE HOJE MESMO
+          </span>
+
+          <h2 class="font-teko font-bold text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-none mb-6">
+            SUA TRANSFORMAÇÃO FÍSICA COMEÇA COM O PRIMEIRO PASSO
+          </h2>
+
+          <p class="font-inter text-base sm:text-lg text-silverText mb-10 leading-relaxed">
+            Clique no botão abaixo para conversar comigo pelo WhatsApp, tirar suas dúvidas e garantir sua vaga para a próxima etapa de treinos.
+          </p>
+
+          <!-- CTA BUTTON (FONTE INTER) -->
+          <div class="flex justify-center">
+            <a href="https://api.whatsapp.com/send?phone=5527999166332&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeRnrYVWkMQEbzvRSUMmX2NxVolEW3Ul_A_oYmYcXooFTiLKmmfpy37VoTmyQ_aem_bBkK-9IegBLYLk7unryhog" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="group relative inline-flex items-center justify-center px-10 py-5 rounded-full bg-gradient-to-r from-primaryBlue via-cyanHighlight to-cobaltBlue font-inter font-extrabold text-base sm:text-lg uppercase tracking-wider text-white shadow-electric-glow hover:shadow-[0_0_60px_rgba(0,163,255,0.8)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+              <span>INICIAR MEU ACOMPANHAMENTO AGORA</span>
+              <div class="ml-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-2 transition-transform shrink-0">
+                <i data-lucide="arrow-right" class="w-5 h-5 text-white"></i>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- RODAPÉ (LOGO.PNG) -->
+  <footer class="bg-onyx py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      
+      <!-- LOGO IMAGE (logo.png) & CREF -->
+      <div class="flex flex-col items-center md:items-start gap-3">
+        <a href="#" class="inline-block">
+          <img src="logo.png" alt="Fábio Fregona Personal Trainer Logo" class="h-12 w-auto object-contain">
+        </a>
+        <span class="text-xs text-silverText font-inter">
+          Informações regulatórias: CREF 8206
+        </span>
+      </div>
+
+      <!-- COPYRIGHT -->
+      <div class="text-xs text-silverText font-inter text-center md:text-right">
+        Copyright © 2026 Fábio Fregona Personal Trainer. Todos os direitos reservados.
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- JAVASCRIPT FOR INTERACTIVITY & MOBILE STACKING -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. FAQ Accordion Interactivity (Completely closed by default)
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const answer = toggle.nextElementSibling;
+        const icon = toggle.querySelector('.icon-chevron');
+        const isOpen = answer.classList.contains('open');
+
+        // Close all FAQs
+        document.querySelectorAll('.faq-answer').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.icon-chevron').forEach(el => el.style.transform = 'rotate(0deg)');
+
+        if (!isOpen) {
+          answer.classList.add('open');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // 2. Continuous Marquee Carousel Pause & Auto-Resume (5s)
+    const marqueeTrack = document.getElementById('marquee-track');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let pauseTimer = null;
+
+    carouselItems.forEach(item => {
+      item.addEventListener('click', () => {
+        marqueeTrack.classList.add('paused');
+        
+        if (pauseTimer) clearTimeout(pauseTimer);
+        
+        pauseTimer = setTimeout(() => {
+          marqueeTrack.classList.remove('paused');
+        }, 5000);
+      });
+    });
+
+    // 3. Dobra 3 Mobile Horizontal Card Stacking on Scroll
+    function updateDobra3HorizontalStack() {
+      if (window.innerWidth >= 768) {
+        const card2 = document.getElementById('pilar-card-2');
+        const card3 = document.getElementById('pilar-card-3');
+        if (card2) card2.style.transform = 'none';
+        if (card3) card3.style.transform = 'none';
+        return;
+      }
+
+      const track = document.getElementById('dobra3-scroll-track');
+      const card2 = document.getElementById('pilar-card-2');
+      const card3 = document.getElementById('pilar-card-3');
+
+      if (!track || !card2 || !card3) return;
+
+      const rect = track.getBoundingClientRect();
+      const totalScroll = track.offsetHeight - window.innerHeight;
+      const currentScroll = -rect.top;
+
+      let progress = currentScroll / totalScroll;
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Progress 0 to 0.5 -> Card 2 slides from translateX(100%) to 0%
+      // Progress 0.5 to 1.0 -> Card 3 slides from translateX(100%) to 0%
+      let p2 = Math.max(0, Math.min(1, progress / 0.5));
+      let p3 = Math.max(0, Math.min(1, (progress - 0.5) / 0.5));
+
+      let translateX2 = (1 - p2) * 100;
+      let translateX3 = (1 - p3) * 100;
+
+      card2.style.transform = `translateX(${translateX2}%)`;
+      card3.style.transform = `translateX(${translateX3}%)`;
+    }
+
+    window.addEventListener('scroll', updateDobra3HorizontalStack, { passive: true });
+    window.addEventListener('resize', updateDobra3HorizontalStack);
+    document.addEventListener('DOMContentLoaded', updateDobra3HorizontalStack);
+
+    // 4. Scroll Entrance Animations (IntersectionObserver)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
